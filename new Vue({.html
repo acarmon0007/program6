@@ -1,0 +1,18 @@
+new Vue({
+    el: '#app',
+    data: {
+        tickets: []
+    },
+    computed: {
+        filteredTickets() {
+            return this.tickets.filter(ticket => ticket.speed > 25);
+        }
+    },
+    created() {
+        fetch('tickets1.json')
+            .then(response => response.json())
+            .then(data => {
+                this.tickets = data;
+            });
+    }
+});
